@@ -28,22 +28,11 @@ export const MovieCard = ({ movie, onToggleBookmark }: MovieCardProps) => {
           onClick={handleBookmarkClick}
           aria-label={movie.isBookmarked ? "북마크 취소" : "북마크 추가"}
         >
-          {movie.isBookmarked ? (
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="#2563EB">
-              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-            </svg>
-          ) : (
-            <svg
-              viewBox="0 0 24 24"
-              width="20"
-              height="20"
-              fill="none"
-              stroke="#FFFFFF"
-              strokeWidth="2"
-            >
-              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-            </svg>
-          )}
+          <img
+            src={movie.isBookmarked ? "/icons/bookmark.svg" : "/icons/bookmark-outline.svg"}
+            alt=""
+            aria-hidden="true"
+          />
         </button>
       </div>
 

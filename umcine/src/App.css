@@ -116,6 +116,12 @@ body {
   padding: 0;
 }
 
+.bookmark-btn img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+}
+
 .div-movie-title {
   margin-top: 8px;
   font-size: 14px;
@@ -146,6 +152,13 @@ body {
   background: #fff;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.pagination button img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin: 0 auto;
 }
 
 .pagination button.active {
