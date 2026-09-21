@@ -1,33 +1,49 @@
-import { createContext, useContext, useState } from "react";
-import { use } from "react";
+import { useState } from "react";
+import { movies as initialMovies } from "./data/movies";
+import type { Movie } from "./types/movie";
+import { Header } from "./components/header";
+import { MovieGrid } from "./components/movie-grid";
+import { Pagination } from "./components/pagination";
+import "./App.css";
 
-type Theme = "light" | "dark";
-type StudyMode = "focus" | "break";
+export const App = () => {
+  const [movieList, setMovieList] = useState<Movie[]>(initialMovies);
 
-const ThemeContext = createContext<Theme>("light");
-const StudyModeContext = createContext<StudyMode>("focus");
-
-function ThemeStatus() {
-  const theme = use(ThemeContext);
-  const studyMode = use(StudyModeContext);
-  return <p>현재 테마: {theme}</p>;
-}
-
-export default function App() {
-  const [theme, setTheme] = useState<Theme>("light");
-
-  function handleToggleTheme() {
-    setTheme((currentTheme) =>
-      currentTheme === "light" ? "dark" : "light",
+  const handleToggleBookmark = (targetId: number) => {
+    setMovieList((prevList) =>
+      prevList.map((movie) =>
+        movie.id === targetId
+          ? { ...movie, isBookmarked: !movie.isBookmarked }
+          : movie
+      )
     );
-  }
+  };
 
   return (
-    <ThemeContext value={theme}>
-      <ThemeStatus />
-      <button onClick={handleToggleTheme}>
-        테마 바꾸기
-      </button>
-    </ThemeContext>
+    <div className="app-container">
+      <Header />
+      <main className="main-container">
+        <h2>영화 목록</h2>
+        
+        <MovieGrid
+          movies={movieList}
+          onToggleBookmark={handleToggleBookmark}
+        />
+
+        <Pagination />
+
+        <footer className="footer-notice">
+          <img
+            src="/images/logos/tmdb-logo.svg"
+            alt="TMDB"
+            width="40"
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
+          This product uses the TMDB API but is not endorsed or certified by TMDB.
+        </footer>
+      </main>
+    </div>
   );
-}
+};
+
+export default App;
