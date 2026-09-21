@@ -1,36 +1,29 @@
-function Header() {
-  return <>Header</>;
-}
-
-function MovieList() {
-  return (
-//React의 JSX 문법에서는 컴포넌트가 반드시 하나의 부모 요소(Single Root Element)만 반환해야 합니다.
-//이렇게 감싸줘야한다.
-    <> 
-    <MovieCard />
-    <MovieCard />
-    </>
-  );
-}
-
-function MovieTitle() {
-  return <h2>오디세이</h2>;
-}
-
-function MovieCard() {
-  return (
-    <article>
-      <MovieTitle />
-      <p>2026.08.05</p>
-    </article>
-  );
-}
+import { useState } from "react";
 
 export default function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <main>
-      <Header />
-      <MovieList />
+      <h1>카운터</h1>
+      <p>현재 값: {count}</p>
+      {/* 5 이상이면 +1 버튼 비활성화 */}
+      <button
+        onClick={() => setCount((current) => current + 1)}
+        disabled={count >= 5}
+      >
+        +1
+      </button>
+      {/* 0 이하이면 -1 버튼 비활성화 */}
+      <button
+        onClick={() => setCount((current) => current - 1)}
+        disabled={count <= 0}
+      >
+        -1
+      </button>
+      <button onClick={() => setCount(0)}>
+        초기화
+      </button>
     </main>
   );
 }
