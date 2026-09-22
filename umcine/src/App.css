@@ -36,6 +36,30 @@ body {
   font-weight: 800;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.search-btn img {
+  width: 24px;
+  height: 24px;
+}
+
 .nav-links {
   display: flex;
   gap: 12px;

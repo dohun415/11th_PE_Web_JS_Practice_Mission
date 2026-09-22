@@ -1,3 +1,5 @@
+// 페이지 이동 UI를 담당하는 컴포넌트이다.
+// 버튼 모양은 있지만 현재 페이지 상태나 클릭 이벤트는 연결되지 않았다.
 export const Pagination = () => {
   return (
     <div className="pagination">
