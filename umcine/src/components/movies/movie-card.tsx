@@ -1,5 +1,5 @@
 import type { MouseEvent } from "react";
-import type { Movie } from "../types/movie";
+import type { Movie } from "../../types/movie";
 
 interface MovieCardProps {
   // 현재 카드가 화면에 표시할 영화 한 개의 데이터
